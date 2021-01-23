@@ -10,5 +10,6 @@
     <color name="colorWhite">#ffffff</color>
     <color name="colorDarkText">#1F2D3D</color>
     <color name="colorBlueText">#00A6FF</color>
-
+    <color name="colorCheckBoxText">#47525E</color>
+    <color name="colorBackgroundHome">#DDDDDD</color>
 </resources>
