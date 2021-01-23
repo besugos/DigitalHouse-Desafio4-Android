@@ -13,7 +13,6 @@
         android:layout_height="60dp"
         android:layout_margin="@dimen/dim_8_dp"
         android:voiceIcon="@drawable/ic_baseline_mic_24"
-        android:closeIcon="@drawable/ic_baseline_mic_24"
         android:iconifiedByDefault="true"
         android:background="@color/colorWhite"
         android:queryHint="Search Games"
