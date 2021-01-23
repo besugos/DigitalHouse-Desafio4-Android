@@ -87,6 +87,7 @@
                 android:layout_marginTop="@dimen/dim_8_dp"/>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:text="@string/log_in"
