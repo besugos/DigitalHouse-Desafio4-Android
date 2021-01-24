@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.besugos.desafio4dha.MainActivity
 import com.besugos.desafio4dha.R
 import com.besugos.desafio4dha.auth.view.LoginActivity
+import com.besugos.desafio4dha.edit.view.EditActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -99,6 +99,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:text="@string/save_game"
@@ -129,7 +130,7 @@
         app:tint="@color/colorPink" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imgPic"
         android:layout_width="@dimen/dim_45_dp"
         android:layout_height="@dimen/dim_45_dp"
         app:layout_constraintBottom_toBottomOf="@+id/imgCircle"
