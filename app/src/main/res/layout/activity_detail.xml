@@ -35,7 +35,7 @@
         android:layout_marginBottom="8dp"
         android:text="Mortal Kombat X"
         android:textColor="@color/colorWhite"
-        android:textSize="@dimen/dim_24_dp"
+        android:textSize="@dimen/dim_24_sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2" />
@@ -78,7 +78,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtLaunchDate" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
+        android:id="@+id/fabEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -88,6 +88,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
-        app:srcCompat="@drawable/ic_baseline_edit_24"
+        app:srcCompat="@drawable/pencil"
         android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>

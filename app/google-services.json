@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "197496192150",
+    "project_id": "desafio4dha",
+    "storage_bucket": "desafio4dha.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197496192150:android:22d96e35e187862fb516b7",
+        "android_client_info": {
+          "package_name": "com.besugos.desafio4dha"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197496192150-v0dmtgl8kmcuupe0h16kgipah9j304n7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.besugos.desafio4dha",
+            "certificate_hash": "35751d743ab64bbb1f908c439b307b5e25af6826"
+          }
+        },
+        {
+          "client_id": "197496192150-rgie03mbunj6lci05f4au0046e1n0u16.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaiI3geH1rM2RDjTdGN2grZJrMUMNJ-3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197496192150-rgie03mbunj6lci05f4au0046e1n0u16.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -8,4 +8,9 @@
     <dimen name="dim_24_dp">24dp</dimen>
     <dimen name="dim_12_sp">12sp</dimen>
     <dimen name="dim_12_dp">12dp</dimen>
+    <dimen name="dim_24_sp">24sp</dimen>
+    <dimen name="dim_130_dp">130dp</dimen>
+    <dimen name="dim_4_dp">4dp</dimen>
+    <dimen name="dim_5_dp">5dp</dimen>
+    <dimen name="dim_45_dp">45dp</dimen>
 </resources>
