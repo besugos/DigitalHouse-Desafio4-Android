@@ -9,6 +9,7 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.besugos.desafio4dha.MainActivity
 import com.besugos.desafio4dha.R
 import com.besugos.desafio4dha.home.view.HomeActivity
 import com.google.android.material.textfield.TextInputEditText
@@ -27,8 +28,6 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
-        auth = FirebaseAuth.getInstance()
 
         tfEmail = findViewById(R.id.tfEmailRegister)
         tfPass = findViewById(R.id.tfPassLogin)

@@ -14,12 +14,14 @@
     app:cardCornerRadius="10dp">
 
     <LinearLayout
+        android:id="@+id/list_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/ivPic"
             android:layout_width="match_parent"
             android:layout_height="130dp"
             android:layout_margin="0dp"
@@ -31,7 +33,7 @@
             android:src="@drawable/mkombat" />
 
         <TextView
-            android:id="@+id/tvName"
+            android:id="@+id/list_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dim_12_dp"
@@ -41,7 +43,7 @@
             tools:text="MORTAL KOMBAT X" />
 
         <TextView
-            android:id="@+id/tvYear"
+            android:id="@+id/list_desc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/colorGrayText"
