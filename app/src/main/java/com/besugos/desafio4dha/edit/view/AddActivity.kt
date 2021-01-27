@@ -31,9 +31,9 @@ class AddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
 
-        etName = findViewById<TextInputEditText>(R.id.etGameName)
-        etYear = findViewById<TextInputEditText>(R.id.etGameYear)
-        etDesc = findViewById<TextInputEditText>(R.id.etGameDesc)
+        etName = findViewById<TextInputEditText>(R.id.etGameNameEdit)
+        etYear = findViewById<TextInputEditText>(R.id.etGameYearEdit)
+        etDesc = findViewById<TextInputEditText>(R.id.etGameDescEdit)
 
 
 //        // Write a message to the database
@@ -47,11 +47,11 @@ class AddActivity : AppCompatActivity() {
 //            procurarArquivo()
 //        }
 
-        findViewById<CardView>(R.id.cvRoundPic).setOnClickListener {
+        findViewById<CardView>(R.id.cvRoundPicEdit).setOnClickListener {
             procurarArquivo()
         }
 
-        findViewById<Button>(R.id.btnSave).setOnClickListener {
+        findViewById<Button>(R.id.btnSaveEdit).setOnClickListener {
             enviarArquivo()
         }
     }
@@ -68,7 +68,7 @@ class AddActivity : AppCompatActivity() {
         val storage = firebase.getReference("uploads")
 
         storage.child("in_game.png").downloadUrl.addOnSuccessListener {
-            Picasso.get().load(it).into(findViewById<ImageView>(R.id.imgPic))
+            Picasso.get().load(it).into(findViewById<ImageView>(R.id.imgPicEdit))
         }
     }
 
@@ -117,7 +117,7 @@ class AddActivity : AppCompatActivity() {
         if (requestCode == CONTENT_REQUEST_CODE && resultCode == RESULT_OK) {
             // Código
             imageURI = data?.data
-            findViewById<ImageView>(R.id.imgLoadedGame).setImageURI(imageURI)
+            findViewById<ImageView>(R.id.imgLoadedGameEdit).setImageURI(imageURI)
         }
     }
 
