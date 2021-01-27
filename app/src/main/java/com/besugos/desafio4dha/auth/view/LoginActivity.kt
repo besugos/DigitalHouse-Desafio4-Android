@@ -1,5 +1,6 @@
 package com.besugos.desafio4dha.auth.view
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +8,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.TextView
 import android.widget.Toast
 import com.besugos.desafio4dha.MainActivity
@@ -23,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var tfPass: TextInputLayout
     private lateinit var etEmail: TextInputEditText
     private lateinit var etPass: TextInputEditText
+    private lateinit var cbPersist: CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
         tfPass = findViewById(R.id.tfPassLogin)
         etEmail = findViewById(R.id.etEmailLogin)
         etPass = findViewById(R.id.etPassLogin)
+        cbPersist = findViewById(R.id.cbPersist)
 
         btnLogin.setOnClickListener() {
 
@@ -47,13 +51,15 @@ class LoginActivity : AppCompatActivity() {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithEmail:success")
                             val user = auth.currentUser
+                            val pref = baseContext.getSharedPreferences(user?.email, Context.MODE_PRIVATE)
+                            pref.edit().putBoolean(user?.email, cbPersist.isChecked).apply()
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
                             finish()
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithEmail:failure", task.exception)
-                            Toast.makeText(baseContext, "",
+                            Toast.makeText(baseContext, "Fail",
                                 Toast.LENGTH_SHORT).show()
                         }
                     }

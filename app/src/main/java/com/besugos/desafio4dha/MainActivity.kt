@@ -1,13 +1,13 @@
 package com.besugos.desafio4dha
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +20,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.Query
-import java.util.HashMap
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private var editText: EditText? = null
@@ -47,14 +47,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         button!!.setOnClickListener(View.OnClickListener {
-            val databaseReference = FirebaseDatabase.getInstance().reference.child("2FyxkYV7TlcEJ0jybjUAfUq91pT2").push()
+            val databaseReference =
+                FirebaseDatabase.getInstance().reference.child("2FyxkYV7TlcEJ0jybjUAfUq91pT2")
+                    .push()
             val map: MutableMap<String, Any?> = HashMap()
 //            map["id"] = databaseReference.key
             map["title"] = editText!!.getText().toString()
             map["Description"] = edt!!.getText().toString()
             databaseReference.setValue(map)
         })
-        linearLayoutManager = GridLayoutManager(this,2)
+        linearLayoutManager = GridLayoutManager(this, 2)
         recyclerView!!.setLayoutManager(linearLayoutManager)
         recyclerView!!.setHasFixedSize(true)
         Load() //method containing  FirebaseRecyclerAdapter
@@ -106,4 +108,5 @@ class MainActivity : AppCompatActivity() {
         recyclerView!!.adapter = adapter
         adapter!!.startListening()
     }
+
 }
