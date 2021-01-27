@@ -40,6 +40,7 @@
             android:layout_marginStart="@dimen/dim_8_dp"
             android:textColor="@color/colorDarkText"
             android:textSize="@dimen/dim_16_sp"
+            android:textAllCaps="true"
             tools:text="MORTAL KOMBAT X" />
 
         <TextView
@@ -52,9 +53,6 @@
             android:layout_marginStart="@dimen/dim_8_dp"
             tools:text="2018" />
 
-
-
     </LinearLayout>
-
-
+    
 </androidx.cardview.widget.CardView>
