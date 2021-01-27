@@ -3,17 +3,16 @@ package com.besugos.desafio4dha
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.besugos.desafio4dha.detail.DetailActivity
+import com.besugos.desafio4dha.edit.view.AddActivity
 import com.besugos.desafio4dha.home.model.GameModel
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
@@ -43,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
 
         findViewById<FloatingActionButton>(R.id.fabAdd).setOnClickListener {
-            val intent = Intent(this, DetailActivity::class.java)
+            val intent = Intent(this, AddActivity::class.java)
             startActivity(intent)
         }
 
@@ -88,11 +87,19 @@ class MainActivity : AppCompatActivity() {
                 holder.setTxtDesc(model.year)
                 holder.setPic(model.picPathString)
                 holder.root.setOnClickListener {
-                    Toast.makeText(
-                        this@MainActivity,
-                        position.toString(),
-                        Toast.LENGTH_SHORT
-                    ).show()
+//                    Toast.makeText(
+//                        this@MainActivity,
+//                        position.toString(),
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+                    val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                    with(intent) {
+                        putExtra("NAME", model.name)
+                        putExtra("DESC", model.desc)
+                        putExtra("YEAR", model.year)
+                        putExtra("PIC", model.picPathString)
+                        startActivity(this)
+                    }
                 }
             }
         }

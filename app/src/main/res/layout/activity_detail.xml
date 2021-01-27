@@ -8,9 +8,9 @@
 
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgGameLarge"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="@dimen/dim_250_dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,47 +18,47 @@
         app:srcCompat="@drawable/mkombat" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/imgBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
+        android:layout_marginStart="@dimen/dim_16_dp"
+        android:layout_marginTop="@dimen/dim_16_dp"
+        app:layout_constraintStart_toStartOf="@+id/imgGameLarge"
+        app:layout_constraintTop_toTopOf="@+id/imgGameLarge"
         app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
     <TextView
         android:id="@+id/txtGameTitleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="Mortal Kombat X"
+        android:layout_marginStart="@dimen/dim_16_dp"
+        android:layout_marginBottom="@dimen/dim_8_dp"
+        tools:text="Mortal Kombat X"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/dim_24_sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintStart_toStartOf="@+id/imageView2" />
+        app:layout_constraintBottom_toBottomOf="@+id/imgGameLarge"
+        app:layout_constraintStart_toStartOf="@+id/imgGameLarge" />
 
     <TextView
         android:id="@+id/txtGameTitleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Mortal Kombat X"
+        android:layout_marginStart="@dimen/dim_16_dp"
+        android:layout_marginTop="@dimen/dim_8_dp"
+        tools:text="Mortal Kombat X"
         android:textColor="@color/colorDarkText"
         android:textSize="@dimen/dim_16_sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/imgGameLarge" />
 
     <TextView
         android:id="@+id/txtLaunchDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Lançamento: 2018"
+        android:layout_marginStart="@dimen/dim_16_dp"
+        android:layout_marginTop="@dimen/dim_8_dp"
+        tools:text="Lançamento: 2018"
         android:textColor="@color/colorGrayText"
         android:textSize="@dimen/dim_12_sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,10 +68,10 @@
         android:id="@+id/txtGameDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Descrição do jogo"
+        android:layout_marginStart="@dimen/dim_16_dp"
+        android:layout_marginTop="@dimen/dim_16_dp"
+        android:layout_marginEnd="@dimen/dim_16_dp"
+        tools:text="@string/descri_o_do_jogo"
         android:textColor="@color/colorGrayText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -81,13 +81,13 @@
         android:id="@+id/fabEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="@dimen/dim_8_dp"
         android:clickable="true"
         app:tint="@color/colorWhite"
         android:backgroundTint="@color/colorPink"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintBottom_toBottomOf="@+id/imgGameLarge"
+        app:layout_constraintEnd_toEndOf="@+id/imgGameLarge"
+        app:layout_constraintTop_toBottomOf="@+id/imgGameLarge"
         app:srcCompat="@drawable/pencil"
         android:focusable="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>
