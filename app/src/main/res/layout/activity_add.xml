@@ -83,7 +83,7 @@
                     android:layout_height="180dp"
                     android:layout_gravity="top"
                     android:background="@color/colorWhite"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
                     android:textColor="@color/colorPrimary" />
 
             </com.google.android.material.textfield.TextInputLayout>

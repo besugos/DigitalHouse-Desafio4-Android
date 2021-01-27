@@ -20,7 +20,6 @@ import com.squareup.picasso.Picasso
 
 class EditActivity : AppCompatActivity() {
 
-
     private var imageURI: Uri? = null
     private lateinit var auth: FirebaseAuth
     private lateinit var filename: String
@@ -43,7 +42,6 @@ class EditActivity : AppCompatActivity() {
         btnSave = findViewById<Button>(R.id.btnSaveEdit)
         imgTop = findViewById<ImageView>(R.id.imgLoadedGameEdit)
         card = findViewById<CardView>(R.id.cvRoundPicEdit)
-
 
         val name = intent.getStringExtra("NAME")
         val year = intent.getStringExtra("YEAR")

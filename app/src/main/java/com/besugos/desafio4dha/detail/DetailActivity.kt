@@ -1,5 +1,6 @@
 package com.besugos.desafio4dha.detail
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
@@ -13,6 +14,7 @@ import com.squareup.picasso.Picasso
 
 class DetailActivity : AppCompatActivity() {
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
@@ -31,7 +33,7 @@ class DetailActivity : AppCompatActivity() {
 
         txtLarge.text = name
         txtSmall.text = name
-        txtYear.text = year
+        txtYear.text = "Lançamento: $year"
         txtDesc.text = desc
 
         val firebase = FirebaseStorage.getInstance()
