@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
+import com.besugos.desafio4dha.MainActivity
 import com.besugos.desafio4dha.R
 import com.besugos.desafio4dha.auth.view.LoginActivity
 import com.besugos.desafio4dha.auth.view.LoginQuebradoActivity
@@ -27,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             } else {
-                val intent = Intent(this, LoginActivity::class.java)
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             }

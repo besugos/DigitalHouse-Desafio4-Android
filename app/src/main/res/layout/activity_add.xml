@@ -30,7 +30,7 @@
             android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tfGameNameEdit"
+                android:id="@+id/tfGameName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dim_16_dp"
@@ -40,7 +40,7 @@
                 app:boxStrokeColor="@color/colorGrayText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etGameNameEdit"
+                    android:id="@+id/etGameName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorWhite"
@@ -50,7 +50,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tfGameYearEdit"
+                android:id="@+id/tfGameYear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/dim_16_dp"
@@ -59,7 +59,7 @@
                 app:boxStrokeColor="@color/colorGrayText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etGameYearEdit"
+                    android:id="@+id/etGameYear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorWhite"
@@ -69,7 +69,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/tfGameDescEdit"
+                android:id="@+id/tfGameDesc"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
                 android:layout_marginHorizontal="@dimen/dim_16_dp"
@@ -78,7 +78,7 @@
                 app:boxStrokeColor="@color/colorGrayText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etGameDescEdit"
+                    android:id="@+id/etGameDesc"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
                     android:layout_gravity="top"
@@ -89,7 +89,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSaveEdit"
+                android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
                 android:layout_marginHorizontal="@dimen/dim_16_dp"
@@ -105,7 +105,7 @@
 
 
     <ImageView
-        android:id="@+id/imgCircleEdit"
+        android:id="@+id/imgCircle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="@dimen/dim_4_dp"
@@ -119,7 +119,7 @@
         app:tint="@color/colorPink" />
 
     <ImageView
-        android:id="@+id/imgPicEdit"
+        android:id="@+id/imgPic"
         android:layout_width="@dimen/dim_45_dp"
         android:layout_height="@dimen/dim_45_dp"
         android:elevation="@dimen/dim_5_dp"
@@ -130,7 +130,7 @@
         app:layout_constraintTop_toTopOf="@+id/cardLogin" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cvRoundPicEdit"
+        android:id="@+id/cvRoundPic"
         android:layout_width="@dimen/dim_120_dp"
         android:layout_height="@dimen/dim_120_dp"
         app:cardElevation="@dimen/dim_6_dp"
@@ -138,13 +138,13 @@
         android:backgroundTint="@color/colorTransparent"
         android:outlineSpotShadowColor="@color/colorTransparent"
         android:outlineAmbientShadowColor="@color/colorTransparent"
-        app:layout_constraintBottom_toBottomOf="@+id/imgCircleEdit"
-        app:layout_constraintEnd_toEndOf="@+id/imgCircleEdit"
-        app:layout_constraintStart_toStartOf="@+id/imgCircleEdit"
-        app:layout_constraintTop_toTopOf="@+id/imgCircleEdit">
+        app:layout_constraintBottom_toBottomOf="@+id/imgCircle"
+        app:layout_constraintEnd_toEndOf="@+id/imgCircle"
+        app:layout_constraintStart_toStartOf="@+id/imgCircle"
+        app:layout_constraintTop_toTopOf="@+id/imgCircle">
 
         <ImageView
-            android:id="@+id/imgLoadedGameEdit"
+            android:id="@+id/imgLoadedGame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"

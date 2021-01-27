@@ -31,27 +31,15 @@ class AddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add)
 
-        etName = findViewById<TextInputEditText>(R.id.etGameNameEdit)
-        etYear = findViewById<TextInputEditText>(R.id.etGameYearEdit)
-        etDesc = findViewById<TextInputEditText>(R.id.etGameDescEdit)
+        etName = findViewById<TextInputEditText>(R.id.etGameName)
+        etYear = findViewById<TextInputEditText>(R.id.etGameYear)
+        etDesc = findViewById<TextInputEditText>(R.id.etGameDesc)
 
-
-//        // Write a message to the database
-
-//
-//        myRef.setValue("Hello, World!")
-//
-//        obterArquivo()
-
-//        findViewById<ImageView>(R.id.imgCircle).setOnClickListener {
-//            procurarArquivo()
-//        }
-
-        findViewById<CardView>(R.id.cvRoundPicEdit).setOnClickListener {
+        findViewById<CardView>(R.id.cvRoundPic).setOnClickListener {
             procurarArquivo()
         }
 
-        findViewById<Button>(R.id.btnSaveEdit).setOnClickListener {
+        findViewById<Button>(R.id.btnSave).setOnClickListener {
             enviarArquivo()
         }
     }
@@ -68,7 +56,7 @@ class AddActivity : AppCompatActivity() {
         val storage = firebase.getReference("uploads")
 
         storage.child("in_game.png").downloadUrl.addOnSuccessListener {
-            Picasso.get().load(it).into(findViewById<ImageView>(R.id.imgPicEdit))
+            Picasso.get().load(it).into(findViewById<ImageView>(R.id.imgPic))
         }
     }
 
@@ -86,11 +74,11 @@ class AddActivity : AppCompatActivity() {
             fileReference.putFile(this)
                 .addOnSuccessListener {
                     // Salvar o fileReference.toString() no Realtime Database
-                    Toast.makeText(this@AddActivity, "Sucesso!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AddActivity, "Success", Toast.LENGTH_SHORT).show()
                     Log.d("PROGRESS", fileReference.toString())
                 }
                 .addOnFailureListener {
-                    Toast.makeText(this@AddActivity, "DEU ÁGUIA!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@AddActivity, "Fail", Toast.LENGTH_SHORT).show()
                 }
                 .addOnProgressListener {
                     Log.d("PROGRESS", it.toString())
@@ -103,7 +91,6 @@ class AddActivity : AppCompatActivity() {
 
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference(auth.currentUser!!.uid)
-//        val myRef = database.getReference("2FyxkYV7TlcEJ0jybjUAfUq91pT2")
 
         myRef.child(stamp).setValue(game)
 
@@ -117,7 +104,7 @@ class AddActivity : AppCompatActivity() {
         if (requestCode == CONTENT_REQUEST_CODE && resultCode == RESULT_OK) {
             // Código
             imageURI = data?.data
-            findViewById<ImageView>(R.id.imgLoadedGameEdit).setImageURI(imageURI)
+            findViewById<ImageView>(R.id.imgLoadedGame).setImageURI(imageURI)
         }
     }
 
