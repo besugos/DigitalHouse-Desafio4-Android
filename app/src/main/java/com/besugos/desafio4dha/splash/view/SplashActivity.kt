@@ -1,9 +1,11 @@
 package com.besugos.desafio4dha.splash.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.besugos.desafio4dha.MainActivity
 import com.besugos.desafio4dha.R
@@ -20,15 +22,19 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
 
         Handler(Looper.getMainLooper()).postDelayed({
 
-            if (auth.currentUser == null) {
-                val intent = Intent(this, LoginActivity::class.java)
+            val pref = baseContext.getSharedPreferences(user?.email, Context.MODE_PRIVATE)
+            val persist = pref.getBoolean(user?.email, false)
+
+            if (auth.currentUser != null && persist) {
+                val intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, LoginActivity::class.java)
                 startActivity(intent)
                 finish()
             }
