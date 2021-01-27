@@ -49,7 +49,13 @@ class DetailActivity : AppCompatActivity() {
 
         findViewById<FloatingActionButton>(R.id.fabEdit).setOnClickListener {
             val intent = Intent(this, EditActivity::class.java)
-            startActivity(intent)
+            with(intent) {
+                putExtra("NAME", name)
+                putExtra("DESC", desc)
+                putExtra("YEAR", year)
+                putExtra("PIC", pic)
+                startActivity(this)
+            }
         }
     }
 }
