@@ -9,13 +9,13 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import com.besugos.desafio4dha.R
-import com.besugos.desafio4dha.model.GameModel
+import com.besugos.desafio4dha.home.model.GameModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.ktx.Firebase
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 
@@ -27,6 +27,7 @@ class EditActivity : AppCompatActivity() {
     private lateinit var etYear: TextInputEditText
     private lateinit var etDesc: TextInputEditText
     private lateinit var auth: FirebaseAuth
+    private lateinit var filename: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -45,7 +46,11 @@ class EditActivity : AppCompatActivity() {
 //
 //        obterArquivo()
 
-        findViewById<ImageView>(R.id.imgCircle).setOnClickListener {
+//        findViewById<ImageView>(R.id.imgCircle).setOnClickListener {
+//            procurarArquivo()
+//        }
+
+        findViewById<CardView>(R.id.cvRoundPic).setOnClickListener {
             procurarArquivo()
         }
 
@@ -70,7 +75,6 @@ class EditActivity : AppCompatActivity() {
         }
     }
 
-
     fun enviarArquivo() {
         val stamp = System.currentTimeMillis().toString()
         imageURI?.run {
@@ -79,7 +83,7 @@ class EditActivity : AppCompatActivity() {
 
             val extension = MimeTypeMap.getSingleton()
                 .getExtensionFromMimeType(contentResolver.getType(imageURI!!))
-
+            filename = "${stamp}.${extension}"
             val fileReference = storage.child("${stamp}.${extension}")
 
             fileReference.putFile(this)
@@ -96,12 +100,13 @@ class EditActivity : AppCompatActivity() {
                 }
         }
 
-        val game = GameModel(etName.text.toString(), etYear.text.toString(), etDesc.text.toString())
+        val game = GameModel(etName.text.toString(), etYear.text.toString(), etDesc.text.toString(), filename)
 
         auth = FirebaseAuth.getInstance()
 
         val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference(auth.currentUser!!.uid)
+        //val myRef = database.getReference(auth.currentUser!!.uid)
+        val myRef = database.getReference("2FyxkYV7TlcEJ0jybjUAfUq91pT2")
 
         myRef.child(stamp).setValue(game)
 
@@ -115,7 +120,7 @@ class EditActivity : AppCompatActivity() {
         if (requestCode == CONTENT_REQUEST_CODE && resultCode == RESULT_OK) {
             // Código
             imageURI = data?.data
-            findViewById<ImageView>(R.id.imgPic).setImageURI(imageURI)
+            findViewById<ImageView>(R.id.imgLoadedGame).setImageURI(imageURI)
         }
     }
 

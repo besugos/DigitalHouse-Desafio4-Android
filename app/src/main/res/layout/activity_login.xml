@@ -35,7 +35,7 @@
             android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tfEmailRegister"
+            android:id="@+id/tfEmailLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
@@ -45,7 +45,7 @@
             android:layout_marginTop="@dimen/dim_24_dp">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEmailRegister"
+                android:id="@+id/etEmailLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/colorWhite"

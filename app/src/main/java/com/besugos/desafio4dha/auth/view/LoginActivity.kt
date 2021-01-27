@@ -9,11 +9,11 @@ import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.besugos.desafio4dha.MainActivity
 import com.besugos.desafio4dha.R
-import com.besugos.desafio4dha.home.view.HomeActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.*
 
 class LoginActivity : AppCompatActivity() {
 
@@ -30,12 +30,37 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        tfEmail = findViewById(R.id.tfEmailRegister)
+        val btnLogin = this.findViewById<Button>(R.id.btnLogin)
+        val btnRegister = this.findViewById<TextView>(R.id.txtCreateAccount)
+
+        tfEmail = findViewById(R.id.tfEmailLogin)
         tfPass = findViewById(R.id.tfPassLogin)
-        etEmail = findViewById(R.id.etEmailRegister)
+        etEmail = findViewById(R.id.etEmailLogin)
         etPass = findViewById(R.id.etPassLogin)
 
-        findViewById<TextView>(R.id.txtCreateAccount).setOnClickListener {
+        btnLogin.setOnClickListener() {
+
+            if (validaCampos()) {
+                auth.signInWithEmailAndPassword(etEmail.text.toString(), etPass.text.toString())
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("TAG", "signInWithEmail:success")
+                            val user = auth.currentUser
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("TAG", "signInWithEmail:failure", task.exception)
+                            Toast.makeText(baseContext, "",
+                                Toast.LENGTH_SHORT).show()
+                        }
+                    }
+            }
+        }
+
+        btnRegister.setOnClickListener() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
@@ -60,30 +85,9 @@ class LoginActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                tfPass.error = ""
+                tfEmail.error = ""
             }
         })
-
-        findViewById<Button>(R.id.btnLogin).setOnClickListener {
-            if (validaCampos()) {
-                auth.signInWithEmailAndPassword(etEmail.text.toString(), etPass.text.toString())
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d("TAG", "signInWithEmail:success")
-                            val user = auth.currentUser
-                            val intent = Intent(this, HomeActivity::class.java)
-                            startActivity(intent)
-                            finish()
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w("TAG", "signInWithEmail:failure", task.exception)
-                            Toast.makeText(baseContext, "Login error",
-                                Toast.LENGTH_SHORT).show()
-                        }
-                    }
-            }
-        }
 
     }
 
@@ -98,13 +102,30 @@ class LoginActivity : AppCompatActivity() {
         if (etPass.text.isNullOrBlank()) {
             tfPass.error = "Please type your password"
             response = false
+        } else if (etPass.text!!.length < 8){
+            tfPass.error = "Password must be at least 8 characters long"
+            response = false
         }
 
-//        else if (etPass.text!!.length < 8){
-//            tfPass.error = "Password must be at least 8 characters long"
-//            response = false
-//        }
-
         return response
+    }
+
+    private fun updateUI(currentUser: FirebaseUser?) {
+        if (currentUser != null) {
+            if (currentUser.isEmailVerified) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+                finish()
+            } else {
+                Toast.makeText(this, "Valide seu email", Toast.LENGTH_LONG).show()
+                auth.signOut()
+            }
+        }
+
+    }
+
+    companion object {
+        private const val RC_SIGN_IN = 1
+        private const val FB_SIGN_IN = 64206
     }
 }

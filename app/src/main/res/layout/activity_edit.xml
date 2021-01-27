@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".auth.view.LoginActivity">
+    tools:context=".edit.view.EditActivity">
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/kratos" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/dim_8_dp"
+        app:cardCornerRadius="@dimen/dim_8_dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginHorizontal="@dimen/dim_8_dp"
-        app:cardCornerRadius="@dimen/dim_8_dp">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -38,20 +33,19 @@
                 android:id="@+id/tfGameName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dim_16_dp"
+                android:layout_marginTop="64dp"
                 android:hint="@string/name"
                 android:textColorHint="@color/colorGrayText"
-                app:boxStrokeColor="@color/colorGrayText"
-                android:layout_marginHorizontal="@dimen/dim_16_dp"
-                android:layout_marginTop="64dp">
+                app:boxStrokeColor="@color/colorGrayText">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etGameName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorWhite"
-                    android:textColor="@color/colorPrimary"
                     android:inputType="text"
-                    />
+                    android:textColor="@color/colorPrimary" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,20 +53,18 @@
                 android:id="@+id/tfGameYear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/dim_16_dp"
                 android:hint="@string/created_at"
                 android:textColorHint="@color/colorGrayText"
-                app:boxStrokeColor="@color/colorGrayText"
-                android:layout_marginHorizontal="@dimen/dim_16_dp"
-                >
+                app:boxStrokeColor="@color/colorGrayText">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etGameYear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/colorWhite"
-                    android:textColor="@color/colorPrimary"
                     android:inputType="number"
-                    />
+                    android:textColor="@color/colorPrimary" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -80,21 +72,19 @@
                 android:id="@+id/tfGameDesc"
                 android:layout_width="match_parent"
                 android:layout_height="180dp"
+                android:layout_marginHorizontal="@dimen/dim_16_dp"
                 android:hint="@string/description"
                 android:textColorHint="@color/colorGrayText"
-                app:boxStrokeColor="@color/colorGrayText"
-                android:layout_marginHorizontal="@dimen/dim_16_dp"
-                >
+                app:boxStrokeColor="@color/colorGrayText">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etGameDesc"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
-                    android:background="@color/colorWhite"
-                    android:textColor="@color/colorPrimary"
-                    android:inputType="text"
                     android:layout_gravity="top"
-                    />
+                    android:background="@color/colorWhite"
+                    android:inputType="text"
+                    android:textColor="@color/colorPrimary" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -102,13 +92,12 @@
                 android:id="@+id/btnSave"
                 android:layout_width="match_parent"
                 android:layout_height="54dp"
-                android:text="@string/save_game"
-                android:textSize="@dimen/dim_16_sp"
                 android:layout_marginHorizontal="@dimen/dim_16_dp"
                 android:layout_marginTop="@dimen/dim_32_dp"
                 android:layout_marginBottom="@dimen/dim_16_dp"
                 android:backgroundTint="@color/colorPink"
-                />
+                android:text="@string/save_game"
+                android:textSize="@dimen/dim_16_sp" />
 
         </LinearLayout>
 
@@ -119,13 +108,13 @@
         android:id="@+id/imgCircle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:elevation="@dimen/dim_4_dp"
+        android:minWidth="@dimen/dim_130_dp"
+        android:minHeight="@dimen/dim_130_dp"
         app:layout_constraintBottom_toTopOf="@+id/cardLogin"
         app:layout_constraintEnd_toEndOf="@+id/cardLogin"
         app:layout_constraintStart_toStartOf="@+id/cardLogin"
         app:layout_constraintTop_toTopOf="@+id/cardLogin"
-        android:minWidth="@dimen/dim_130_dp"
-        android:minHeight="@dimen/dim_130_dp"
-        android:elevation="@dimen/dim_4_dp"
         app:srcCompat="@drawable/circle"
         app:tint="@color/colorPink" />
 
@@ -133,11 +122,37 @@
         android:id="@+id/imgPic"
         android:layout_width="@dimen/dim_45_dp"
         android:layout_height="@dimen/dim_45_dp"
+        android:elevation="@dimen/dim_5_dp"
+        app:srcCompat="@drawable/ic_baseline_photo_camera_24"
+        app:layout_constraintBottom_toTopOf="@+id/cardLogin"
+        app:layout_constraintEnd_toEndOf="@+id/cardLogin"
+        app:layout_constraintStart_toStartOf="@+id/cardLogin"
+        app:layout_constraintTop_toTopOf="@+id/cardLogin" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvRoundPic"
+        android:layout_width="@dimen/dim_120_dp"
+        android:layout_height="@dimen/dim_120_dp"
+        app:cardElevation="@dimen/dim_6_dp"
+        app:cardCornerRadius="@dimen/dim_60_dp"
+        android:backgroundTint="@color/colorTransparent"
+        android:outlineSpotShadowColor="@color/colorTransparent"
+        android:outlineAmbientShadowColor="@color/colorTransparent"
         app:layout_constraintBottom_toBottomOf="@+id/imgCircle"
         app:layout_constraintEnd_toEndOf="@+id/imgCircle"
         app:layout_constraintStart_toStartOf="@+id/imgCircle"
-        app:layout_constraintTop_toTopOf="@+id/imgCircle"
-        android:elevation="@dimen/dim_5_dp"
-        app:srcCompat="@drawable/ic_baseline_photo_camera_24" />
+        app:layout_constraintTop_toTopOf="@+id/imgCircle">
+
+        <ImageView
+            android:id="@+id/imgLoadedGame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/mkombat"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

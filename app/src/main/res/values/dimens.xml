@@ -13,4 +13,7 @@
     <dimen name="dim_4_dp">4dp</dimen>
     <dimen name="dim_5_dp">5dp</dimen>
     <dimen name="dim_45_dp">45dp</dimen>
+    <dimen name="dim_60_dp">60dp</dimen>
+    <dimen name="dim_120_dp">120dp</dimen>
+    <dimen name="dim_6_dp">6dp</dimen>
 </resources>
