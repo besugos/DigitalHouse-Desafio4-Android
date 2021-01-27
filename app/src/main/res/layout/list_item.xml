@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/gamesListItem"
-    android:layout_width="190dp"
+    android:layout_width="@dimen/dim_190_dp"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="@dimen/dim_8_dp"
+    android:layout_marginStart="@dimen/dim_8_dp"
+    android:layout_marginEnd="@dimen/dim_8_dp"
     android:backgroundTint="@android:color/white"
     android:clickable="true"
     android:focusable="true"
-    app:cardCornerRadius="10dp">
+    app:cardCornerRadius="@dimen/dim_10_dp">
 
     <LinearLayout
         android:id="@+id/list_root"
@@ -23,14 +23,14 @@
         <ImageView
             android:id="@+id/ivPic"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:layout_margin="0dp"
+            android:layout_height="@dimen/dim_130_dp"
+            android:layout_margin="@dimen/dim_0_dp"
             android:contentDescription="@string/gamepic"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/mkombat" />
+            tools:src="@drawable/mkombat" />
 
         <TextView
             android:id="@+id/list_title"

@@ -1,13 +1,11 @@
 package com.besugos.desafio4dha.detail
 
 import android.content.Intent
-import android.media.Image
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.besugos.desafio4dha.R
-import com.besugos.desafio4dha.edit.view.AddActivity
 import com.besugos.desafio4dha.edit.view.EditActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.storage.FirebaseStorage
@@ -58,5 +56,4 @@ class DetailActivity : AppCompatActivity() {
             }
         }
     }
-
 }

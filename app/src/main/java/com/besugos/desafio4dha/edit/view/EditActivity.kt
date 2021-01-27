@@ -2,14 +2,13 @@ package com.besugos.desafio4dha.edit.view
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.webkit.MimeTypeMap
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.besugos.desafio4dha.R
 import com.besugos.desafio4dha.home.model.GameModel
@@ -32,7 +31,7 @@ class EditActivity : AppCompatActivity() {
     private lateinit var txtDesc: TextInputEditText
     private lateinit var btnSave: Button
     private lateinit var imgTop: ImageView
-    private lateinit var card : CardView
+    private lateinit var card: CardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,7 +57,7 @@ class EditActivity : AppCompatActivity() {
         val firebase = FirebaseStorage.getInstance()
         val storage = firebase.getReference("uploads")
 
-        storage.child(pic!!).downloadUrl.addOnSuccessListener {
+        storage.child(pic).downloadUrl.addOnSuccessListener {
             Picasso.get().load(it).into(imgTop)
             imageURI = it
         }
@@ -105,7 +104,12 @@ class EditActivity : AppCompatActivity() {
                 }
         }
 
-        val game = GameModel(txtName.text.toString(), txtYear.text.toString(), txtDesc.text.toString(), filename)
+        val game = GameModel(
+            txtName.text.toString(),
+            txtYear.text.toString(),
+            txtDesc.text.toString(),
+            filename
+        )
 
         auth = FirebaseAuth.getInstance()
 
@@ -119,7 +123,6 @@ class EditActivity : AppCompatActivity() {
         myRef.child(filho).setValue(game)
 
         finish()
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
