@@ -15,7 +15,6 @@
         <activity android:name=".auth.view.LoginActivity" />
         <activity android:name=".edit.view.AddActivity" />
         <activity android:name=".detail.DetailActivity" />
-        <activity android:name=".home.view.HomeActivity" />
         <activity android:name=".auth.view.RegisterActivity" />
         <activity android:name=".splash.view.SplashActivity">
             <intent-filter>
@@ -24,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".home.view.HomeActivity" />
     </application>
 
 </manifest>

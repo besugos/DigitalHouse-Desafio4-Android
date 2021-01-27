@@ -5,12 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.besugos.desafio4dha.MainActivity
 import com.besugos.desafio4dha.R
 import com.besugos.desafio4dha.auth.view.LoginActivity
-import com.besugos.desafio4dha.auth.view.LoginQuebradoActivity
+import com.besugos.desafio4dha.home.view.HomeActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class SplashActivity : AppCompatActivity() {
@@ -30,7 +28,7 @@ class SplashActivity : AppCompatActivity() {
             val persist = pref.getBoolean(user?.email, false)
 
             if (auth.currentUser != null && persist) {
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, HomeActivity::class.java)
                 startActivity(intent)
                 finish()
             } else {
@@ -38,7 +36,6 @@ class SplashActivity : AppCompatActivity() {
                 startActivity(intent)
                 finish()
             }
-        }, 10)
-
+        }, 1000)
     }
 }
