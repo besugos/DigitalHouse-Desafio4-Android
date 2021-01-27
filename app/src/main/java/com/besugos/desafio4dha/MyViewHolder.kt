@@ -27,7 +27,6 @@ class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val storage = firebase.getReference("uploads")
 
         storage.child(string!!).downloadUrl.addOnSuccessListener {
-            txtDesc.text = string
             Picasso.get().load(it).into(image)
         }
     }
@@ -37,6 +36,5 @@ class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         txtTitle = itemView.findViewById(R.id.list_title)
         txtDesc = itemView.findViewById(R.id.list_desc)
         image = itemView.findViewById(R.id.ivPic)
-
     }
 }

@@ -3,6 +3,7 @@ package com.besugos.desafio4dha
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.besugos.desafio4dha.home.model.GameModel
 import com.firebase.ui.database.FirebaseRecyclerAdapter
 import com.firebase.ui.database.FirebaseRecyclerOptions
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.Query
 import java.util.HashMap
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private var recyclerView: RecyclerView? = null
     private var linearLayoutManager: LinearLayoutManager? = null
     private var adapter: FirebaseRecyclerAdapter<*, *>? = null
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,8 @@ class MainActivity : AppCompatActivity() {
         edt = findViewById(R.id.etd)
         button = findViewById<Button>(R.id.btn)
         recyclerView = findViewById(R.id.list)
+
+        auth = FirebaseAuth.getInstance()
 
         findViewById<FloatingActionButton>(R.id.fabAdd).setOnClickListener {
             val intent = Intent(this, DetailActivity::class.java)
@@ -57,7 +62,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun Load() {
-        val query: Query = FirebaseDatabase.getInstance().reference.child("2FyxkYV7TlcEJ0jybjUAfUq91pT2")
+        val query: Query = FirebaseDatabase.getInstance().reference.child(auth.currentUser!!.uid)
         val options = FirebaseRecyclerOptions.Builder<GameModel>()
             .setQuery(
                 query
@@ -90,7 +95,6 @@ class MainActivity : AppCompatActivity() {
                     ).show()
                 }
             }
-
         }
         recyclerView!!.adapter = adapter
         adapter!!.startListening()

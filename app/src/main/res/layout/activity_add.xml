@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".edit.view.EditActivity">
+    tools:context=".edit.view.AddActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -152,5 +152,7 @@
             />
 
     </androidx.cardview.widget.CardView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
