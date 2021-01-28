@@ -8,6 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.besugos.desafio4dha.R
 import com.besugos.desafio4dha.edit.view.EditActivity
+import com.besugos.desafio4dha.home.view.HomeActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
@@ -44,6 +45,8 @@ class DetailActivity : AppCompatActivity() {
         }
 
         imgBack.setOnClickListener {
+            val intent = Intent(this@DetailActivity, HomeActivity::class.java)
+            startActivity(intent)
             finish()
         }
 
@@ -55,7 +58,15 @@ class DetailActivity : AppCompatActivity() {
                 putExtra("YEAR", year)
                 putExtra("PIC", pic)
                 startActivity(this)
+                finish()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@DetailActivity, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

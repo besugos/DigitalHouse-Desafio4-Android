@@ -1,8 +1,11 @@
 package com.besugos.desafio4dha.edit.view
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.webkit.MimeTypeMap
 import android.widget.Button
@@ -11,7 +14,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import com.besugos.desafio4dha.R
+import com.besugos.desafio4dha.detail.DetailActivity
 import com.besugos.desafio4dha.home.model.GameModel
+import com.besugos.desafio4dha.home.view.HomeActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -120,7 +125,12 @@ class EditActivity : AppCompatActivity() {
 
         myRef.child(filho).setValue(game)
 
-        finish()
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this@EditActivity, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 1000)
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -131,6 +141,13 @@ class EditActivity : AppCompatActivity() {
             imageURI = data?.data
             findViewById<ImageView>(R.id.imgLoadedGameEdit).setImageURI(imageURI)
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this@EditActivity, HomeActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     companion object {

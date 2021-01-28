@@ -1,5 +1,6 @@
 package com.besugos.desafio4dha.home.view
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -21,6 +22,8 @@ import com.google.firebase.database.Query
 
 class HomeActivity : AppCompatActivity() {
 
+    private lateinit var homeActivity: String
+
     private var recyclerView: RecyclerView? = null
     private var linearLayoutManager: LinearLayoutManager? = null
     private var adapter: FirebaseRecyclerAdapter<*, *>? = null
@@ -29,6 +32,8 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        homeActivity = this.localClassName
 
         recyclerView = findViewById(R.id.list)
 
@@ -60,6 +65,7 @@ class HomeActivity : AppCompatActivity() {
                 )
             }
             .build()
+
         adapter = object : FirebaseRecyclerAdapter<GameModel, HomeViewHolder>(options) {
             override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
                 val view = LayoutInflater.from(parent.context)
@@ -79,6 +85,7 @@ class HomeActivity : AppCompatActivity() {
                         putExtra("YEAR", model.year)
                         putExtra("PIC", model.picPathString)
                         startActivity(this)
+                        finish()
                     }
                 }
             }
