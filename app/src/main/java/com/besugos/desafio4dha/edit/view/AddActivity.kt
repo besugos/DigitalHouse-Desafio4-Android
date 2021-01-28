@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.webkit.MimeTypeMap
 import android.widget.Button
 import android.widget.ImageView
@@ -19,10 +18,9 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import com.squareup.picasso.Picasso
 
 class AddActivity : AppCompatActivity() {
-
+    private var hasImage: Boolean = false
     private var imageURI: Uri? = null
     private lateinit var etName: TextInputEditText
     private lateinit var etYear: TextInputEditText
@@ -54,55 +52,51 @@ class AddActivity : AppCompatActivity() {
         startActivityForResult(intent, CONTENT_REQUEST_CODE)
     }
 
-    fun obterArquivo() {
-        val firebase = FirebaseStorage.getInstance()
-        val storage = firebase.getReference("uploads")
-
-        storage.child("in_game.png").downloadUrl.addOnSuccessListener {
-            Picasso.get().load(it).into(findViewById<ImageView>(R.id.imgPic))
-        }
-    }
-
     fun enviarArquivo() {
-        val stamp = System.currentTimeMillis().toString()
-        imageURI?.run {
-            val firebase = FirebaseStorage.getInstance()
-            val storage = firebase.getReference("uploads")
+        if (hasImage) {
+            val stamp = System.currentTimeMillis().toString()
+            imageURI?.run {
+                val firebase = FirebaseStorage.getInstance()
+                val storage = firebase.getReference("uploads")
 
-            val extension = MimeTypeMap.getSingleton()
-                .getExtensionFromMimeType(contentResolver.getType(imageURI!!))
-            filename = "${stamp}.${extension}"
-            val fileReference = storage.child("${stamp}.${extension}")
+                val extension = MimeTypeMap.getSingleton()
+                    .getExtensionFromMimeType(contentResolver.getType(imageURI!!))
+                filename = "${stamp}.${extension}"
+                val fileReference = storage.child("${stamp}.${extension}")
 
-            fileReference.putFile(this)
-                .addOnSuccessListener {
-                    // Salvar o fileReference.toString() no Realtime Database
-                    Toast.makeText(this@AddActivity, "Success", Toast.LENGTH_SHORT).show()
-                    Log.d("PROGRESS", fileReference.toString())
-                }
-                .addOnFailureListener {
-                    Toast.makeText(this@AddActivity, "Fail", Toast.LENGTH_SHORT).show()
-                }
-                .addOnProgressListener {
-                    Log.d("PROGRESS", it.toString())
-                }
+                fileReference.putFile(this)
+                    .addOnSuccessListener {
+                        // Salvar o fileReference.toString() no Realtime Database
+                        Toast.makeText(this@AddActivity, "Saving...", Toast.LENGTH_SHORT).show()
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this@AddActivity, "Saving...", Toast.LENGTH_SHORT).show()
+                    }
+
+            }
+
+            val game = GameModel(
+                etName.text.toString(),
+                etYear.text.toString(),
+                etDesc.text.toString(),
+                filename
+            )
+
+            auth = FirebaseAuth.getInstance()
+
+            val database = FirebaseDatabase.getInstance()
+            val myRef = database.getReference(auth.currentUser!!.uid)
+
+            myRef.child(stamp).setValue(game)
+
+            Handler(Looper.getMainLooper()).postDelayed({
+                val intent = Intent(this@AddActivity, HomeActivity::class.java)
+                startActivity(intent)
+                finish()
+            }, 1000)
+        } else {
+            Toast.makeText(this@AddActivity, "Saving failed. You must provide an image.", Toast.LENGTH_SHORT).show()
         }
-
-        val game = GameModel(etName.text.toString(), etYear.text.toString(), etDesc.text.toString(), filename)
-
-        auth = FirebaseAuth.getInstance()
-
-        val database = FirebaseDatabase.getInstance()
-        val myRef = database.getReference(auth.currentUser!!.uid)
-
-        myRef.child(stamp).setValue(game)
-
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this@AddActivity, HomeActivity::class.java)
-            startActivity(intent)
-            finish()
-        }, 1000)
-
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -110,6 +104,7 @@ class AddActivity : AppCompatActivity() {
 
         if (requestCode == CONTENT_REQUEST_CODE && resultCode == RESULT_OK) {
             // Código
+            hasImage = true
             imageURI = data?.data
             findViewById<ImageView>(R.id.imgLoadedGame).setImageURI(imageURI)
         }

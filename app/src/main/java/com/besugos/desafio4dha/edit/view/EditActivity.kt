@@ -96,14 +96,11 @@ class EditActivity : AppCompatActivity() {
             fileReference.putFile(this)
                 .addOnSuccessListener {
                     // Salvar o fileReference.toString() no Realtime Database
-                    Toast.makeText(this@EditActivity, "Success", Toast.LENGTH_SHORT).show()
-                    Log.d("PROGRESS", fileReference.toString())
+                    Toast.makeText(this@EditActivity, "Saving...", Toast.LENGTH_SHORT).show()
+
                 }
                 .addOnFailureListener {
-                    Toast.makeText(this@EditActivity, "Fail", Toast.LENGTH_SHORT).show()
-                }
-                .addOnProgressListener {
-                    Log.d("PROGRESS", it.toString())
+                    Toast.makeText(this@EditActivity, "Saving...", Toast.LENGTH_SHORT).show()
                 }
         }
 
